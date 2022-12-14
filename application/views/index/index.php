@@ -4,7 +4,7 @@
     </div>
     <div class="alert alert-primary">
         <h5>Selamat Datang! </h5>
-        <span>Semoga harimu menyenangkan</span>
+        <span>Welcome, have a great day!</span>
     </div>
 
 </main>
