@@ -29,10 +29,10 @@ function getGrafikColumn(selector, data, title) {
         },
         series: [{
             name: 'Sudah',
-            data: [143, 142, 143, 130]
+            data: [164, 148, 182, 170]
         }, {
             name: 'Belum',
-            data: [20, 29, 19, 22]
+            data: [82, 80, 79, 92]
         }]
     });
 }
