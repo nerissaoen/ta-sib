@@ -60,15 +60,23 @@ class M_pmb extends CI_Model
     }
 
 
-    public function pendaftarBank()
+    public function pendaftarBank($jsp)
     {
-        $this->db->select(['count(id_pendaftar) as jumlah', 'sum(pendaftar.nominal_bayar) as total',
-        'pendaftar.id_bank', 'pendaftar.is_bayar', 'bank.bank']);
-        $this->db->join('bank', 'pendaftar.id_bank = bank.id_bank');
-        $this->db->where_in('id_jalur', [2,3]);
-        $this->db->group_by('id_bank', 'is_bayar');
-        $result = $this->db->get('pendaftar')->result_array();
+        $result = 0;
+        $this->db->where('id_bank', $jsp);
+        $data = $this->db->get('bank')->result_array();
+        if (!empty($data)) {
+            $result = count($data);
+        }
         return $result;
+
+        // $this->db->select(['count(id_pendaftar) as jumlah', 'sum(pendaftar.nominal_bayar) as total',
+        // 'pendaftar.id_bank', 'pendaftar.is_bayar', 'bank.bank']);
+        // $this->db->join('bank', 'pendaftar.id_bank = bank.id_bank');
+        // $this->db->where_in('id_jalur', [2,3]);
+        // $this->db->group_by('id_bank', 'is_bayar');
+        // $result = $this->db->get('pendaftar')->result_array();
+        // return $result;
     }
 
 

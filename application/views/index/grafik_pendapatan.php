@@ -9,47 +9,102 @@
     </div>
 </main>
 <script>
-    getGrafikColum('pendaftar', <?= $data ?>, 'Grafik Pendapatan');
-    
-    function getGrafikColum(selector, data, categories, title, subtitle) {
+    getGrafikPie('pendaftar', <?= $data ?>, 'Grafik Pendapatan');
+    function getGrafikPie(selector, data, title, ) {
+        var bca = 24450000;
+        var mandiri = 25650000;
+        var bni = 22800000;
+        var bri = 24300000;
+        
         Highcharts.chart(selector, {
             chart: {
-                type: 'column'
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
             },
             title: {
                 text: title
             },
-            subtitle: {
-                text: subtitle
-            },
-            xAxis: {
-                categories: categories,
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Pendapatan'
-                }
-            },
             tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
+                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Hasil Pendapatan </b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
             },
             plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
                 }
             },
-            series: data,
-            credits: {
-                enabled : false 
-            }
+            series: [{
+                name: 'Pendapatan',
+                colorByPoint: true,
+                data: [{
+                    name: 'BCA',
+                    jumlah: bca,
+                    y: Math.floor(Math.random() * 30) + 1,
+                }, {
+                    name: 'Mandiri',
+                    jumlah: mandiri,
+                    y: Math.floor(Math.random() * 30) + 1,
+                }, {
+                    name: 'BNI',
+                    jumlah: bni,
+                    y: Math.floor(Math.random() * 30) + 1,
+                }, {
+                    name: 'BRI',
+                    jumlah: bri,
+                    y: Math.floor(Math.random() * 30) + 1,
+                }],
+            }]
         });
+
+        // Highcharts.chart(selector, {
+        //     chart: {
+        //         type: 'column'
+        //     },
+        //     title: {
+        //         text: title
+        //     },
+        //     subtitle: {
+        //         text: subtitle
+        //     },
+        //     xAxis: {
+        //         categories: categories,
+        //         crosshair: true
+        //     },
+        //     yAxis: {
+        //         min: 0,
+        //         title: {
+        //             text: 'Pendapatan'
+        //         }
+        //     },
+        //     tooltip: {
+        //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        //         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        //         '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        //         footerFormat: '</table>',
+        //         shared: true,
+        //         useHTML: true
+        //     },
+        //     plotOptions: {
+        //         column: {
+        //             pointPadding: 0.2,
+        //             borderWidth: 0
+        //         }
+        //     },
+        //     series: data,
+        //     credits: {
+        //         enabled : false 
+        //     }
+        // });
     }
 </script>
