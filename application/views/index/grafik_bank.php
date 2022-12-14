@@ -32,7 +32,7 @@ function getGrafikColumn(selector, data, title) {
             data: [164, 148, 182, 170]
         }, {
             name: 'Belum',
-            data: [82, 80, 79, 92]
+            data: [60, 102, 99, 72]
         }]
     });
 }
